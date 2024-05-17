@@ -10,6 +10,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.sql.Types;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -35,6 +36,34 @@ public class Merchant {
     @Enumerated(EnumType.STRING)
     private Status status;
 
+    private BasicInfo basicInfo;
+
+    @NotNull
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Service> services;
+
+    @NotNull
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Menu> menus;
+
+    @NotNull
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Category> categories;
+
+    @NotNull
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ItemOffers> itemOffers;
+
+    @NotNull
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Item> items;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Options> optionsGroups;
+
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Availability> availabilities;
 
 
 }
